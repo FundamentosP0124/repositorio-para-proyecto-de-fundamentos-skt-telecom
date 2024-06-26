@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <unistd.h>
@@ -80,14 +79,14 @@ int main()
             }
 
             // Ingresar nombres y apuestas
-            vector<Jugador> jugadores(numJugadores);
+            Jugador* jugadores = new Jugador[numJugadores];
             for (int i = 0; i < numJugadores; ++i)
             {
                 cout << "Jugador " << i + 1 << " ingrese su nombre: ";
                 cin >> jugadores[i].nombre;
                 cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
                 cin >> jugadores[i].caballo;
-                jugadores[i].caballo--; // ajustar a índice del array
+                jugadores[i].caballo--; // ajustar a indice del array
                 cout << "Ingrese su apuesta: ";
                 cin >> jugadores[i].apuesta;
             }
@@ -123,23 +122,25 @@ int main()
             {
                 if (jugadores[i].caballo == ganador)
                 {
-                    cout << "¡Felicidades " << jugadores[i].nombre << "! Has ganado " << jugadores[i].apuesta * 2 << " dolares.\n";
+                    cout << "Felicidades " << jugadores[i].nombre << "! Has ganado " << jugadores[i].apuesta * 2 << " unidades.\n";
                 }
                 else
                 {
-                    cout << "Lo siento " << jugadores[i].nombre << ", has perdido tu apuesta de " << jugadores[i].apuesta << " dolares.\n";
+                    cout << "Lo siento " << jugadores[i].nombre << ", has perdido tu apuesta de " << jugadores[i].apuesta << " unidades.\n";
                 }
             }
+
+            delete[] jugadores; // Liberar memoria
             break;
         }
         case 2:
-            
+           
             break;
         case 3:
             cout << "Saliendo...\n";
             break;
         default:
-            cout << "Opción inválida. Intente de nuevo.\n";
+            cout << "Opcion invalida. Intente de nuevo.\n";
         }
     } while (opcion != 3);
 
