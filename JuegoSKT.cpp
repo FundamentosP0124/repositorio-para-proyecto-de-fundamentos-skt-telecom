@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <unistd.h>
+#include <limits>
+
 
 using namespace std;
 
@@ -71,13 +73,17 @@ int main()
         case 1:
         {
             int numJugadores;
-            cout << "Cuantos jugadores van a jugar? (Maximo 3): ";
-            cin >> numJugadores;
-            if (numJugadores < 1 || numJugadores > 3)
+            do
             {
-                cout << "Numero de jugadores invalido. Debe ser entre 1 y 3.\n";
-                break;
-            }
+                cout << "Cuantos jugadores van a jugar? (Maximo 3): ";
+                cin >> numJugadores;
+                if (numJugadores < 1 || numJugadores > 3)
+                {
+                    cout << "\n";
+                    cout << "Error## Numero de jugadores invalido. Debe ser entre 1 y 3.\n";
+                    cout << "\n";
+                }
+            } while (numJugadores < 1 || numJugadores > 3);
 
             // Ingresar nombres y apuestas
             Jugador *jugadores = new Jugador[numJugadores];
@@ -85,11 +91,35 @@ int main()
             {
                 cout << "Jugador numero " << i + 1 << " ingrese su nombre: ";
                 cin >> jugadores[i].nombre;
-                cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
-                cin >> jugadores[i].caballo;
-                jugadores[i].caballo--; // ajustar a indice del array
-                cout << "Ingrese su apuesta: ";
-                cin >> jugadores[i].apuesta;
+
+                // Validar número de caballo
+                do
+                {
+                    cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
+                    cin >> jugadores[i].caballo;
+
+                    if (cin.fail() || jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS)
+                    {
+                        cout << "Error## Numero de caballo invalido. Intente de nuevo.\n";
+                        cin.clear();// Limpiar el estado de error
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignorar la entrada inválida
+                    }
+                } while (jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS);
+                jugadores[i].caballo--; // Ajustar a índice del array
+
+                // Validar apuesta
+                do
+                {
+                    cout << "Ingrese su apuesta: ";
+                    cin >> jugadores[i].apuesta;
+
+                    if (cin.fail() || jugadores[i].apuesta <= 0)
+                    {
+                        cout << "Error## Apuesta invalida. Debe ser un numero positivo.\n";
+                        cin.clear();                                         
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    }
+                } while (cin.fail() || jugadores[i].apuesta <= 0);
             }
 
             // Carrera
@@ -163,7 +193,12 @@ int main()
             cout << "Saliendo del juego...\n";
             break;
         default:
-            cout << "Opcion invalida. Intente de nuevo.\n";
+            system("cls");
+            cout << "\n";
+            cout << "\n";
+            cout << "ERROR###       Opcion invalida. Intente de nuevo.\n";
+            cout << "\n";
+            cout << "\n";
         }
     } while (opcion != 4);
 
