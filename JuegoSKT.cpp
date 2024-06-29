@@ -18,7 +18,8 @@ struct Jugador
 
 void mostrarCaballo(int posicion)
 {
-    for (int i = 0; i < posicion; ++i) {
+    for (int i = 0; i < posicion; ++i)
+    {
         cout << " ";
     }
     cout << ">\n";
@@ -39,21 +40,21 @@ void mostrarCarrera(int posiciones[NUM_CABALLOS])
 
 void mostrarMenu()
 {
-    cout << "SKT Telecom\n";
-    cout << " /_/\  \n";
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    cout << "Bienvenido al juego de apuestas de caballos\n";
+    cout << "               By SKT Telecom\n";
     cout << "( o - o )\n";
-    cout << " > ^ <\n";
-    cout << "__/\n";
-    cout << "( ^ - ^ )\n";
-    cout << " > ^ <\n";
-    cout << "Menu:\n";
-    cout << "1. Jugar\n";
-    cout << "2. Reglas del Juego\n";
-    cout << "3. Salir\n";
-    cout << "Seleccione una opcion: ";
+    cout << "                                       >__<\n";
+    cout << "             ( ^ - ^ )\n";
+    cout << "                            > ^---^ <\n";
+    cout << "               Menu principal:\n";
+    cout << "                   1. Jugar\n";
+    cout << "                 2. Como jugar\n";
+    cout << "                 3. Integrantes\n";
+    cout << "                   4. Salir\n";
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    cout << "              Seleccione una opcion: ";
 }
-
-
 
 int main()
 {
@@ -79,10 +80,10 @@ int main()
             }
 
             // Ingresar nombres y apuestas
-            Jugador* jugadores = new Jugador[numJugadores];
+            Jugador *jugadores = new Jugador[numJugadores];
             for (int i = 0; i < numJugadores; ++i)
             {
-                cout << "Jugador " << i + 1 << " ingrese su nombre: ";
+                cout << "Jugador numero " << i + 1 << " ingrese su nombre: ";
                 cin >> jugadores[i].nombre;
                 cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
                 cin >> jugadores[i].caballo;
@@ -134,15 +135,37 @@ int main()
             break;
         }
         case 2:
-           
+            cout << "\n";
+            cout << "---------------------------------------------------------------------------------------------------------------------------\n";
+            cout << "has seleccionado el apartado como jugar:\n";
+            cout << "Bienvenido al juego de carrera de caballos el juego es simple \n";
+            cout << "Al momento de darle jugar nos solicitara que indiquemos cuantos jugadores jugaran la partida\n";
+            cout << "Despues de indicar nos pedira nuestro nombre para poder dar un ganador a la hora de finalizar la carrera\n";
+            cout << "Luego nos solicitara que ingresemos el numero del caballo al que deseamos apoyar y la apuesta que deseamos ingresar\n";
+            cout << "Y este proceso repetira dependiendo del numero de jugadores que jugaran\n";
+            cout << "Esperemos disfrutes el juego! nos vemos en la pista de carreras\n";
+            cout << "---------------------------------------------------------------------------------------------------------------------------\n";
+            cout << "\n";
+
             break;
         case 3:
-            cout << "Saliendo...\n";
+            cout << "\n";
+            cout << "***************************************************************************\n";
+            cout << "Has seleccionado el apartdado para ver los integrantes de SKT Telecom:\n";
+            cout << "Daniel Adalberto Alvarado Flores, 00048524\n";
+            cout << "Hector Ernesto Argueta Constanza, 00012424\n";
+            cout << "Xavier Ernesto Garcia Villacorta, 00014624\n";
+            cout << "***************************************************************************\n";
+            cout << "\n";
+
+            break;
+        case 4:
+            cout << "Saliendo del juego...\n";
             break;
         default:
             cout << "Opcion invalida. Intente de nuevo.\n";
         }
-    } while (opcion != 3);
+    } while (opcion != 4);
 
     return 0;
 }
