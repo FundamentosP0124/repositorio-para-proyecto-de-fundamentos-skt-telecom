@@ -181,25 +181,28 @@ int main()
                     {
                         cout << "Lo siento " << jugadores[i].nombre << ", has perdido tu apuesta de " << jugadores[i].apuesta << " unidades.\n";
                     }
+                    
                 }
+                 
+                
 
 
 
-                // Guardar resultados en un archivo de texto
+         // Guardar resultados en un archivo de texto
 ofstream archivo("resultado_partida.txt");
 if (archivo.is_open()) {
     archivo << "Resultado de la partida:\n";
     archivo << "------------------------\n";
     for (int i = 0; i < numJugadores; ++i) {
         if (jugadores[i].caballo == ganador) {
-            archivo << "Ganador: " << jugadores[i].nombre << " - Apuesta: " << jugadores[i].apuesta << " unidades\n";
+            archivo << "Ganador: " << jugadores[i].nombre << " - Apuesta: " << jugadores[i].apuesta << " unidades - Caballo: " << jugadores[i].caballo + 1 << "\n";
         } else {
-            archivo << "Perdedor: " << jugadores[i].nombre << " - Apuesta: " << jugadores[i].apuesta << " unidades\n";
+            archivo << "Perdedor: " << jugadores[i].nombre << " - Apuesta: " << jugadores[i].apuesta << " unidades - Caballo: " << jugadores[i].caballo + 1 << "\n";
         }
     }
     archivo << "------------------------\n";
     archivo.close();
-    cout << "Resultado guardado en archivo 'resultado_partida.txt'\n";
+    cout << "Resultado guardado en archivo 'esultado_partida.txt'\n";
 } else {
     cout << "Error al guardar resultado en archivo\n";
 }
