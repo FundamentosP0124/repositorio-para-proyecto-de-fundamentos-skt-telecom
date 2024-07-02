@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <limits>
 #include <fstream>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -42,7 +44,8 @@ void mostrarCarrera(int posiciones[NUM_CABALLOS])
 
 void mostrarMenu()
 {
-    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+     printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");     printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");   printf("\3");printf("\3\n");
+     
     cout << "Bienvenido al juego de apuestas de caballos\n";
     cout << "               By SKT Telecom\n";
     cout << "( o - o )\n";
@@ -50,12 +53,15 @@ void mostrarMenu()
     cout << "             ( ^ - ^ )\n";
     cout << "                            > ^---^ <\n";
     cout << "                 Menu principal:\n";
-    cout << "                   1. Jugar\n";
-    cout << "                 2. Como jugar\n";
-    cout << "                 3. Integrantes\n";
-    cout << "                   4. Salir\n";
-    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
-    cout << "              Seleccione una opcion: ";
+   cout << "                   1. Jugar"; printf("\21\n");
+    cout << "                 2. Como jugar";printf("\21\n");
+    cout << "                 3. Integrantes";printf("\21\n");
+    cout << "                   4. Salir"; printf("\21\n");
+    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");     printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");   printf("\3");printf("\3\n");
+
+   
+    cout << "              Seleccione una opcion:";
+     
 }
 bool volverAlMenu()
 {
@@ -102,41 +108,47 @@ int main()
                 } while (numJugadores < 1 || numJugadores > 3);
 
                 // Zona de recoleccion de nombres y apuestas
-                Jugador *jugadores = new Jugador[numJugadores];
-                for (int i = 0; i < numJugadores; ++i)
-                {
-                    cout << "Jugador numero " << i + 1 << " ingrese su nombre: ";
-                    cin >> jugadores[i].nombre;
+Jugador *jugadores = new Jugador[numJugadores];
+for (int i = 0; i < numJugadores; ++i)
+{
+    cout << "Jugador numero " << i + 1 << " ingrese su nombre: ";
+    cin >> jugadores[i].nombre;
 
-                    // Valida número de caballo para que sea solo los del rango
-                    do
-                    {
-                        cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
-                        cin >> jugadores[i].caballo;
+    // Validar que solo se permitan letras en el nombre
+    while (!all_of(jugadores[i].nombre.begin(), jugadores[i].nombre.end(), ::isalpha)) {
+        cout << "Error## El nombre solo debe contener letras. Intente de nuevo.\n";
+        cin >> jugadores[i].nombre;
+    }
 
-                        if (cin.fail() || jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS)
-                        {
-                            cout << "Error## Numero de caballo invalido. Intente de nuevo.\n";
-                            cin.clear();                                         // Limpiar el estado de error
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignorar la entrada inválida
-                        }
-                    } while (jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS);
-                    jugadores[i].caballo--; // Ajustar a índice del array
+    // Valida número de caballo para que sea solo los del rango
+    do
+    {
+        cout << "Ingrese el numero del caballo (1-" << NUM_CABALLOS << ") en el que desea apostar: ";
+        cin >> jugadores[i].caballo;
 
-                    // Valida apuesta para que solo sea numeros
-                    do
-                    {
-                        cout << "Ingrese su apuesta: ";
-                        cin >> jugadores[i].apuesta;
+        if (cin.fail() || jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS)
+        {
+            cout << "Error## Numero de caballo invalido. Intente de nuevo.\n";
+            cin.clear();                                         // Limpiar el estado de error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignorar la entrada inválida
+        }
+    } while (jugadores[i].caballo < 1 || jugadores[i].caballo > NUM_CABALLOS);
+    jugadores[i].caballo--; // Ajustar a índice del array
 
-                        if (cin.fail() || jugadores[i].apuesta <= 0)
-                        {
-                            cout << "Error## Apuesta invalida. Debe ser un numero positivo.\n";
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        }
-                    } while (cin.fail() || jugadores[i].apuesta <= 0);
-                }
+    // Validar que solo se permitan números en la apuesta
+    do
+    {
+        cout << "Ingrese su apuesta: ";
+        cin >> jugadores[i].apuesta;
+
+        if (cin.fail() || jugadores[i].apuesta <= 0)
+        {
+            cout << "Error## Apuesta invalida. Debe ser un numero positivo.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } while (cin.fail() || jugadores[i].apuesta <= 0);
+}
 
                 // Carrera
                 bool fin = false;
@@ -189,7 +201,7 @@ int main()
 
 
          // Guardar resultados en un archivo de texto
-ofstream archivo("resultado_partida.txt");
+ofstream archivo("resultado_partida.txt", ios::app);
 if (archivo.is_open()) {
     archivo << "Resultado de la partida:\n";
     archivo << "------------------------\n";
