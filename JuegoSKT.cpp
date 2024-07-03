@@ -57,7 +57,7 @@ void mostrarMenu()
     cout << "                 2. Como jugar";printf("\21\n");
     cout << "                 3. Integrantes";printf("\21\n");
     cout << "                   4. Salir"; printf("\21\n");
-    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");     printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");   printf("\3");printf("\3\n");
+    printf("\3");printf("\3");    printf("\3");printf("\3");   printf("\3");printf("\3");   printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");     printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");    printf("\3");printf("\3");   printf("\3");printf("\3\n");
 
    
     cout << "              Seleccione una opcion:";
@@ -85,9 +85,9 @@ int main()
 
     do
     {
-        mostrarMenu();
-        cin >> opcion;
-        switch (opcion)
+      mostrarMenu();
+     cin >> opcion;
+     switch (opcion)
         {
         case 1:
         {
