@@ -214,7 +214,7 @@ if (archivo.is_open()) {
     }
     archivo << "------------------------\n";
     archivo.close();
-    cout << "Resultado guardado en archivo 'esultado_partida.txt'\n";
+    cout << "Resultado guardado en archivo 'resultado_partida.txt'\n";
 } else {
     cout << "Error al guardar resultado en archivo\n";
 }
